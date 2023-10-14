@@ -1,0 +1,32 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_DB: quiz_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: qwerty
+    volumes:
+      - ./create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
+      - ./db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  fastapi-app:
+    container_name: quiz_app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command:
+      - uvicorn
+      - routes:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8080"
+    ports:
+      - 8000:8080
+    restart: always
+    depends_on:
+      - postgres
