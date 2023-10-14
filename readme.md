@@ -18,3 +18,8 @@
 
    ```bash
    docker-compose -f docker-compose.yml up -d
+
+
+## Шаг 3: Пример POST запроса
+
+ - curl -X POST -H "Content-Type: application/json" -d '{"questions_num": 1}' http://localhost:8000/question/
