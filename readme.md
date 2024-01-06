@@ -1,25 +1,20 @@
-# Инструкция по сборке и запуску Docker-контейнеров
+# Quiz App
 
-В этой инструкции объясняется, как собрать и запустить Docker-контейнеры для вашего FastAPI-сервиса и базы данных PostgreSQL. 
+Этот репозиторий содержит исходный код для FastAPI-сервиса, который предоставляет API для викторин. Включены инструкции по сборке и запуску Docker-контейнеров для этого сервиса и базы данных PostgreSQL.
 
-## Шаг 1: Подготовка файлов
+## Клонирование репозитория на ваш компьютер
 
-Перед началом убедитесь, что у вас есть следующие файлы в директории:
+    ```bash
+    git clone https://github.com/HappyGuyTime/quiz_app.git
+    cd quiz_app
+    ```
 
-- `docker-compose.yml`: Файл Docker Compose, описывающий контейнеры PostgreSQL и FastAPI.
-- `create_table.sql` (опционально): SQL-скрипт для создания таблицы в PostgreSQL.
-- `Dockerfile`: Файл для сборки Docker-образа вашего FastAPI-приложения.
-
-## Шаг 2: Сборка и запуск Docker-контейнеров
-
-1. Перейдите в директорию с вашим файлом `docker-compose.yml`.
-
-2. Выполните команду для запуска Docker-контейнеров в фоновом режиме:
+## Сборка и запуск Docker-контейнеров
 
    ```bash
-   docker-compose -f docker-compose.yml up -d
+   docker-compose up -d --build
 
 
-## Шаг 3: Пример POST запроса
+## Пример POST запроса
 
  - curl -X POST -H "Content-Type: application/json" -d '{"questions_num": 1}' http://localhost:8000/question/
