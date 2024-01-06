@@ -13,7 +13,7 @@
 
    ```bash
    docker-compose up -d --build
-
+   ```
 
 ## Пример POST запроса
 
